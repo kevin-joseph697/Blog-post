@@ -1,0 +1,19 @@
+{% extends "Base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	
+		<form method="post">
+		{% csrf_token %}
+				<br><br><fieldset>
+				<legend>Create New Post</legend>
+					<!-- form is a inbuilt keyword which does'nt need any passing of arguments from the 
+					create view class  -->
+					{{ form|crispy }}
+					<br><input class="btn btn-success btn-lg" type="submit" value="Post">
+				</fieldset>
+		</form>
+	
+	
+	
+	
+{% endblock content %}

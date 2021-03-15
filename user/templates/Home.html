@@ -1,0 +1,16 @@
+{% extends "Base.html" %}
+{% block content %}
+			{% for post in post %}
+				<article class="media content-section">
+		          <div class="media-body">
+		            <div class="article-metadata">
+		              <a class="mr-2" href="#" style="text-transform: capitalize;">Posted By:  {{ post.author }}</a>
+		              <small class="text-muted">{{ post.date_posted }}</small>
+		            </div>
+		            <img class="rounded-circle float-left article-img" src = "{{ post.author.profileimage.image.url }}">
+		            <h4><a class="article-title" href="{% url  'Posts:detail-view' post.id %}">{{ post.title }}</a></h4>
+		            <p class="article-content">{{ post.content }}</p>
+		          </div>
+        		</article>
+        	{% endfor %}
+{% endblock content %}

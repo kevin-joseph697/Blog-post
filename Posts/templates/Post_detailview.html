@@ -1,0 +1,18 @@
+{% extends "Base.html" %}
+{% block content %}
+				<article class="media content-section">
+		          <div class="media-body">
+		            <div class="article-metadata">
+		              <a class="mr-2" href="#" style="text-transform: capitalize;">Posted By:  {{ object.author }}</a>
+		              <small class="text-muted">{{ object.date_posted }}</small>
+		            </div>
+		            <img class="rounded-circle float-left article-img" src="{{ object.author.profileimage.image.url }}">
+		            <h4><a class="article-title" href="#">{{ object.title }}</a></h4>
+		            <p class="article-content">{{ object.content }}</p>
+		          {% if object.author == user %}
+		          <!-- 	<input class="btn btn-danger" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this?')" > -->
+		          	<a class="btn btn-danger" href="{% url 'Posts:delete-post' object.id %}">Delete</a> 
+		          {% endif %}
+		          </div>
+        		</article>
+{% endblock content %}	

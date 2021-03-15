@@ -1,0 +1,33 @@
+{% extends "Base1.html" %}
+{% block content %}
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-3">
+							<br><img class="rounded-circle account-img" src="{{ request.user.profileimage.image.url }}">
+							<h2 class="account-heading" style="text-transform:capitalize;">{{user.username}}</h2>
+							<p class="text-secondary">{{user.email}}</p>
+							<a class="btn btn-info" href="{% url 'user:profile_update' %}">Update Profile</a>
+						</div>
+						<div class="col-sm-12 col-md-8 col-lg-6">
+						<h4 style="text-align:center">My Posts</h4>
+							{% if post %}
+								{% for post in post %}
+									<article class="media content-section">
+							          <div class="media-body">
+							            <div class="article-metadata">
+							              <a class="mr-2" href="#" style="text-transform: capitalize;">Posted By:  {{ post.author }}</a>
+							              <small class="text-muted">{{ post.date_posted }}</small>
+							            </div>
+							            <img class="rounded-circle float-left article-img" src = "{{ post.author.profileimage.image.url }}">
+							            <h4><a class="article-title" href="{% url  'Posts:detail-view' post.id %}">{{ post.title }}</a></h4>
+							            <p class="article-content">{{ post.content }}</p>
+							          </div>
+					        		</article>
+		        				{% endfor %}
+		        			{% else %}
+		        				<h4> You not posted in social media yet <a href="{% url 'Posts:create-post' %}">Create a Post</a> </h4>
+		        			{% endif %}
+						</div>
+					</div>
+				</div>
+{% endblock content %}	

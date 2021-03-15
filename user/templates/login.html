@@ -1,0 +1,34 @@
+{% extends "Base1.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	
+		<form method="post">
+		{% csrf_token %}
+			<!-- page is divided into 12 column   -->
+			<div class="container">
+				<!-- page is repsented in the type of row  -->
+				<div class="row">
+					<!-- dividing the screen for small, medium and large screens -->
+					<div class="col-sm-12 col-md-8 col-lg-6">
+							<br><br><fieldset class="form-group">
+							<legend>Login In</legend>
+								{{ form|crispy }}
+								<br><input class="btn btn-info btn-lg btn-block" type="submit" value="Login">
+								<br><a href="{% url 'user:password_reset' %}">Forgot Password?</a>
+							</fieldset>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-6">
+						<div class="facebook-login-align">
+							<a class="btn btn-info" href="{% url 'social:begin' 'facebook' %}" style="width:300px">Login with facebook</a>
+						</div>
+					</div>
+				</div>
+					<br><a href="{% url 'user:register' %}">Don't have an account then registered here</a>
+			</div>	
+		</form>
+		
+	
+	
+	
+	
+{% endblock content %}
